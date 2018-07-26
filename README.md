@@ -18,7 +18,7 @@ https://vii120.github.io/vue-todo-list/
 * 標記星號：標記為重要項目
 * 篩選功能：可篩選已完成項目、進行中項目或標記星號的項目
 
-![home](https://i.imgur.com/o3dNCjo.png)
+![home](https://i.imgur.com/tWtXB96.png)
 
 
 ## CSS preprocessor
