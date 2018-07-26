@@ -1,0 +1,220 @@
+/*------------------ */
+/* $Catalog */
+/*------------------ */
+/* $Catalog */
+/* $Font */
+/* $Global */
+/* $List Box */
+/* $Header */
+/* $Navbar */
+/* $List Item */
+/* $Delete Bar */
+/*------------------ */
+/*------------------ */
+/* $Font */
+/*------------------ */
+@import url("https://fonts.googleapis.com/css?family=Inconsolata");
+/*------------------ */
+/* $Global */
+/*------------------ */
+* {
+  box-sizing: border-box;
+  position: relative;
+}
+
+html {
+  background-color: #ebebeb;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inconsolata", monospace;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+/*------------------ */
+/* $List Box */
+/*------------------ */
+.box {
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 36px;
+  background-color: #3bb17c;
+  border-radius: 12px;
+  box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+@media (max-width: 576px) {
+  .box {
+    margin-top: 18px;
+  }
+}
+.box input[type="checkbox"] {
+  display: none;
+}
+
+/*------------------ */
+/* $Header */
+/*------------------ */
+header {
+  text-align: center;
+}
+header h3 {
+  font-size: 28px;
+  margin: 24px 0px;
+}
+header .status {
+  margin-bottom: 16px;
+}
+header input[type="text"] {
+  border: none;
+  border-radius: 16px;
+  padding: 8px 12px;
+  margin-bottom: 16px;
+  width: 80%;
+}
+
+/*------------------ */
+/* Navbar */
+/*------------------ */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin-bottom: 8px;
+}
+.navbar .nav-item {
+  cursor: pointer;
+  width: 100%;
+  padding: 8px 0px;
+  border-right: 1px solid;
+}
+@media (max-width: 576px) {
+  .navbar .nav-item {
+    padding: 4px;
+  }
+}
+.navbar .nav-item:last-child {
+  border-right: none;
+}
+.navbar .nav-item.selected {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/*------------------ */
+/* $List Item */
+/*------------------ */
+.list {
+  background-color: #b5e1cd;
+}
+
+.allcheck {
+  font-weight: 700;
+  color: red;
+}
+
+.plan {
+  padding: 16px 0;
+  padding-left: 16px;
+  display: flex;
+  align-items: center;
+}
+.plan .checkbox {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
+  font-size: 22px;
+  margin-right: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+}
+.plan .fn-gp {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.2s;
+}
+.plan .fn-gp .icon {
+  font-size: 18px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  margin: 0 6px;
+  transition: all 0.2s;
+}
+.plan .fn-gp .icon:active {
+  transform: translate(2px, 2px);
+}
+.plan .fn-gp .icon.top {
+  color: orange;
+}
+.plan .fn-gp .icon.del {
+  color: red;
+}
+.plan.finished {
+  text-decoration: line-through;
+}
+.plan.finished .edit-gp {
+  visibility: hidden;
+  opacity: 0;
+}
+.plan.empty {
+  font-style: italic;
+}
+
+@media (max-width: 576px) {
+  .detail {
+    padding-bottom: 36px;
+  }
+}
+@media (max-width: 576px) {
+  .detail .fn-gp {
+    top: auto;
+    bottom: 0;
+  }
+}
+
+/*------------------ */
+/* $Delete Bar */
+/*------------------ */
+.del-gp {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px 0;
+  padding-right: 4px;
+}
+.del-gp .btn {
+  text-align: center;
+  border-radius: 8px;
+  margin: 0 8px;
+  padding: 4px 8px;
+  cursor: pointer;
+  background-color: #b5e1cd;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.1s;
+}
+.del-gp .btn:active {
+  transform: translate(2px, 2px);
+}
+
+/*# sourceMappingURL=style.css.map */
