@@ -135,9 +135,9 @@ header
     transform: translateY(-50%)
     display: flex
     justify-content: space-between
-    visibility: visible
-    opacity: 1
-    transition: all .2s
+    // visibility: visible
+    // opacity: 1
+    // transition: all .2s
     .icon
       display: block
       cursor: pointer
@@ -147,6 +147,8 @@ header
       line-height: 20px
       text-align: center
       margin: 0 6px
+      visibility: visible
+      opacity: 1
       transition: all .2s
       &:active
         transform: translate(2px, 2px)
@@ -157,8 +159,10 @@ header
   &.finished
     text-decoration: line-through
     .fn-gp
-      visibility: hidden
-      opacity: 0
+      .icon
+        &:first-child
+          visibility: hidden
+          opacity: 0
   &.empty
     font-style: italic
 

@@ -144,9 +144,6 @@ header input[type="text"] {
   transform: translateY(-50%);
   display: flex;
   justify-content: space-between;
-  visibility: visible;
-  opacity: 1;
-  transition: all 0.2s;
 }
 .plan .fn-gp .icon {
   display: block;
@@ -157,6 +154,8 @@ header input[type="text"] {
   line-height: 20px;
   text-align: center;
   margin: 0 6px;
+  visibility: visible;
+  opacity: 1;
   transition: all 0.2s;
 }
 .plan .fn-gp .icon:active {
@@ -171,7 +170,7 @@ header input[type="text"] {
 .plan.finished {
   text-decoration: line-through;
 }
-.plan.finished .fn-gp {
+.plan.finished .fn-gp .icon:first-child {
   visibility: hidden;
   opacity: 0;
 }
