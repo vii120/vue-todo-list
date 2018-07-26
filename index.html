@@ -31,29 +31,24 @@
         <div class="list">
           <!-- all check -->
           <div class="allcheck plan" v-if="showAllCheck">
-            <label for="all" class="checkbox">
-              <input type="checkbox" id="all" v-model="allPlan.complete" @click="allcheck()">
-              <i class="far fa-check-circle" v-if="allPlan.complete"></i>
-              <i class="far fa-circle" v-else></i>
-            </label>
-            {{allPlan.content}}
+            <a href="#" class="checkbox" @click.prevent="allcheck()">
+              <i class="far" :class="allPlan.complete?'fa-check-circle':'fa-circle'"></i>
+            </a>
+            <span>{{allPlan.content}}</span>
           </div> 
           <!-- all item-->
           <div v-for="(plan,index) in filtList" :key="index" class="plan detail" :class="{finished:plan.complete}">
-            <label :for="`plan${index}`" class="checkbox">
-              <input type="checkbox" :id="`plan${index}`" v-model="plan.complete" @click="complete(plan)">
-              <i class="far fa-check-circle" v-if="plan.complete"></i>
-              <i class="far fa-circle" v-else></i>
-            </label>
-            {{plan.content}}
+            <a href="#" class="checkbox" @click.prevent="complete(plan)">
+              <i class="far" :class="plan.complete?'fa-check-circle':'fa-circle'"></i>
+            </a>
+            <span>{{plan.content}}</span>
             <!-- function -->
             <div class="fn-gp">
               <a href="#" class="icon edit" @click.prevent="editItem(plan)">
                 <i class="fas fa-pen"></i>
               </a>
               <a href="#" class="icon top" @click.prevent="starItem(plan)">
-                <i class="fas fa-star" v-if="plan.star"></i>
-                <i class="far fa-star" v-else></i>
+                <i class="fa-star" :class="plan.star?'fas':'far'"></i>
               </a>
               <a href="#" class="icon del" @click.prevent="removePlan(plan)">
                 <i class="fas fa-trash-alt"></i>

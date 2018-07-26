@@ -123,6 +123,9 @@ header input[type="text"] {
   font-weight: 700;
   color: red;
 }
+.allcheck .checkbox {
+  color: inherit;
+}
 
 .plan {
   padding: 16px 0;
@@ -131,15 +134,12 @@ header input[type="text"] {
   align-items: center;
 }
 .plan .checkbox {
-  display: inline-block;
-  width: 22px;
-  height: 22px;
-  line-height: 22px;
-  font-size: 22px;
   margin-right: 8px;
-  cursor: pointer;
-  text-align: center;
-  transition: all 0.2s;
+}
+.plan .checkbox i {
+  display: block;
+  font-size: 22px;
+  text-decoration: none;
 }
 .plan .fn-gp {
   position: absolute;
@@ -166,7 +166,7 @@ header input[type="text"] {
 .plan .fn-gp .icon.del {
   color: red;
 }
-.plan.finished {
+.plan.finished span {
   text-decoration: line-through;
 }
 .plan.finished .fn-gp .icon:first-child {

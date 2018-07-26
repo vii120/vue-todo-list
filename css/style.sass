@@ -115,6 +115,8 @@ header
 .allcheck
   font-weight: 700
   color: $danger-color
+  .checkbox
+    color: inherit
   
 .plan
   padding: 16px 0
@@ -122,15 +124,11 @@ header
   display: flex
   align-items: center
   .checkbox
-    display: inline-block
-    width: 22px
-    height: 22px
-    line-height: 22px
-    font-size: 22px
     margin-right: 8px
-    cursor: pointer
-    text-align: center
-    transition: all .2s
+    i
+      display: block
+      font-size: 22px
+      text-decoration: none
   .fn-gp
     position: absolute
     top: 50%
@@ -152,7 +150,8 @@ header
       &.del
         color: $danger-color
   &.finished
-    text-decoration: line-through
+    span
+      text-decoration: line-through
     .fn-gp
       .icon
         &:first-child
