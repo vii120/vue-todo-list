@@ -38,11 +38,6 @@ body {
   padding: 0 16px;
 }
 
-a {
-  text-decoration: none;
-  color: #000;
-}
-
 /*------------------ */
 /* $List Box */
 /*------------------ */
@@ -154,6 +149,8 @@ header input[type="text"] {
   transition: all 0.2s;
 }
 .plan .fn-gp .icon {
+  display: block;
+  cursor: pointer;
   font-size: 18px;
   width: 20px;
   height: 20px;

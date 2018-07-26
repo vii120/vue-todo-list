@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>To Do List - Vue</title>
+  <!-- icon -->
+  <link rel="icon" type="image/png" href="image/icon.png" />
   <!-- css -->
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <!-- font awesome -->
@@ -47,16 +49,16 @@
             {{plan.content}}<br>
             <!-- function icons -->
             <div class="fn-gp">
-              <a href="#" class="icon edit" @click.prevent="editItem(plan)">
+              <span class="icon edit" @click.prevent="editItem(plan)">
                 <i class="fas fa-pen"></i>
-              </a>
-              <a href="#" class="icon top" @click.prevent="starItem(plan)">
+              </span>
+              <span class="icon top" @click.prevent="starItem(plan)">
                 <i class="fas fa-star" v-if="plan.star"></i>
                 <i class="far fa-star" v-else></i>
-              </a>
-              <a href="#" class="icon del" @click.prevent="removePlan(plan)">
+              </span>
+              <span class="icon del" @click.prevent="removePlan(plan)">
                 <i class="fas fa-trash-alt"></i>
-              </a>
+              </span>
             </div>
           </div>
           <div class="plan empty" v-if="filtList==''">
