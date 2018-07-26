@@ -171,7 +171,7 @@ header input[type="text"] {
 .plan.finished {
   text-decoration: line-through;
 }
-.plan.finished .edit-gp {
+.plan.finished .fn-gp {
   visibility: hidden;
   opacity: 0;
 }
