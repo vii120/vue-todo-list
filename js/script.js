@@ -21,6 +21,7 @@ var app = new Vue({
     filter: 'all',
   },
   methods: {
+    //add new plan
     addPlan(plan) {
       if (plan!=''){
         this.list.push({
@@ -31,16 +32,19 @@ var app = new Vue({
         this.newPlan = '';
       }
     },
+    // remove single plan
     removePlan(plan) {
       if (confirm(`Do you want to delete "${plan.content}"?`)){
         this.list.splice(this.list.indexOf(plan),1)
       }
     },
+    //remove all plan
     removeAll() {
       if (confirm("Do you want to delete ALL?")){
         this.list = [];
       }
     },
+    //remove completed plan
     removeComplete() {
       const vm = this;
       console.log(vm.completeNum);
@@ -56,9 +60,11 @@ var app = new Vue({
         alert('Nothing has been completed!');
       }
     },
+    //complete/incomplete single plan
     complete(plan) {
       plan.complete = !plan.complete;
     },
+    //complete/incomplete all plan
     allcheck() {
       const vm = this;
       if (vm.allPlan.complete == false){
@@ -74,10 +80,12 @@ var app = new Vue({
       }
       vm.allPlan.complete = !vm.allPlan.complete;
     },
+    //stared single plan
     starItem(plan) {
       const vm = this;
       plan.star = !plan.star
     },
+    //edit single plan
     editItem(plan) {
       let edit = prompt('Please edit the content below：', plan.content);
       if (edit==null || edit==''){
@@ -88,6 +96,7 @@ var app = new Vue({
     }
   },
   computed: {
+    //filt list
     filtList() {
       const vm = this;
       switch (vm.filter){
@@ -110,12 +119,14 @@ var app = new Vue({
           return vm.list;
       }
     },
+    //completed plan counter
     completeNum() {
       const vm = this;
       let active = vm.list.filter(function(item){
         return item.complete == true });
       return active.length
     },
+    //judgment: show "all check" option or not
     showAllCheck() {
       const vm = this;
       if (vm.filter=='all' && vm.list.length!==0) {

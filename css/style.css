@@ -38,6 +38,11 @@ body {
   padding: 0 16px;
 }
 
+a {
+  text-decoration: none;
+  color: #000;
+}
+
 /*------------------ */
 /* $List Box */
 /*------------------ */
@@ -90,7 +95,6 @@ header input[type="text"] {
   margin-bottom: 8px;
 }
 .navbar .nav-item {
-  cursor: pointer;
   width: 100%;
   padding: 8px 0px;
   border-right: 1px solid;
@@ -142,18 +146,13 @@ header input[type="text"] {
   top: 50%;
   right: 12px;
   transform: translateY(-50%);
-  display: flex;
-  justify-content: space-between;
 }
 .plan .fn-gp .icon {
-  display: block;
-  cursor: pointer;
   font-size: 18px;
   width: 20px;
   height: 20px;
   line-height: 20px;
   text-align: center;
-  margin: 0 6px;
   visibility: visible;
   opacity: 1;
   transition: all 0.2s;
@@ -204,7 +203,6 @@ header input[type="text"] {
   border-radius: 8px;
   margin: 0 8px;
   padding: 4px 8px;
-  cursor: pointer;
   background-color: #b5e1cd;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
   transition: all 0.1s;

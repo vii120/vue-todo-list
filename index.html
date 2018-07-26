@@ -21,18 +21,18 @@
           <div class="status">
             mission completed: {{completeNum}} / {{filtList.length}}
           </div>
-          <input type="text" v-model="newPlan" placeholder="add something..." @keyup.enter="addPlan(newPlan)"><br>
+          <input type="text" v-model="newPlan" placeholder="add something..." @keyup.enter="addPlan(newPlan)" autofocus><br>
         </header>
         <!-- nav bar -->
         <div class="navbar">
-          <div v-for="item in selectList" class="nav-item" :class="{selected:filter==item}" @click="filter=item">{{item}}</div>
+          <a href="#" v-for="item in selectList" class="nav-item" :class="{selected:filter==item}" @click.prevent="filter=item">{{item}}</a>
         </div>
         <!-- list -->
         <div class="list">
           <!-- all check -->
           <div class="allcheck plan" v-if="showAllCheck">
-            <label for="allcheck" class="checkbox">
-              <input type="checkbox" id="allcheck" v-model="allPlan.complete" @click="allcheck()">
+            <label for="all" class="checkbox">
+              <input type="checkbox" id="all" v-model="allPlan.complete" @click="allcheck()">
               <i class="far fa-check-circle" v-if="allPlan.complete"></i>
               <i class="far fa-circle" v-else></i>
             </label>
@@ -40,40 +40,38 @@
           </div> 
           <!-- all item-->
           <div v-for="(plan,index) in filtList" :key="index" class="plan detail" :class="{finished:plan.complete}">
-            <label :for="`check${index}`" class="checkbox">
-              <input type="checkbox" :id="`check${index}`" v-model="plan.complete" @click="complete(plan)">
+            <label :for="`plan${index}`" class="checkbox">
+              <input type="checkbox" :id="`plan${index}`" v-model="plan.complete" @click="complete(plan)">
               <i class="far fa-check-circle" v-if="plan.complete"></i>
               <i class="far fa-circle" v-else></i>
-              <span></span>
             </label>
-            {{plan.content}}<br>
-            <!-- function icons -->
+            {{plan.content}}
+            <!-- function -->
             <div class="fn-gp">
-              <span class="icon edit" @click.prevent="editItem(plan)">
+              <a href="#" class="icon edit" @click.prevent="editItem(plan)">
                 <i class="fas fa-pen"></i>
-              </span>
-              <span class="icon top" @click.prevent="starItem(plan)">
+              </a>
+              <a href="#" class="icon top" @click.prevent="starItem(plan)">
                 <i class="fas fa-star" v-if="plan.star"></i>
                 <i class="far fa-star" v-else></i>
-              </span>
-              <span class="icon del" @click.prevent="removePlan(plan)">
+              </a>
+              <a href="#" class="icon del" @click.prevent="removePlan(plan)">
                 <i class="fas fa-trash-alt"></i>
-              </span>
+              </a>
             </div>
           </div>
           <div class="plan empty" v-if="filtList==''">
             Oops! It's empty!
           </div>
         </div>
-        <!-- delete bar -->
+        <!-- delete -->
         <div class="del-gp">
-          <div class="btn" @click="removeComplete()">delete completed</div>
-          <div class="btn" @click="removeAll()">delete all</div>
+          <a href="#" class="btn" @click.prevent="removeComplete()">delete completed</a>
+          <a href="#" class="btn" @click.prevent="removeAll()">delete all</a>
         </div>
       </div>
     </div>
   </div>
-  
   <!-- vue.js -->
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script type="text/javascript" src="js/script.js"></script>
