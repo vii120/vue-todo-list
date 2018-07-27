@@ -31,10 +31,10 @@
         <div class="list">
           <!-- all check -->
           <div class="allcheck plan" v-if="showAllCheck">
-            <a href="#" class="checkbox" @click.prevent="allcheck()">
-              <i class="far" :class="allPlan.complete?'fa-check-circle':'fa-circle'"></i>
+            <a href="#" class="checkbox" @click.prevent="allCheck()">
+              <i class="far" :class="allComplete?'fa-check-circle':'fa-circle'"></i>
             </a>
-            <span>{{allPlan.content}}</span>
+            <span>{{allCheckText}}</span>
           </div> 
           <!-- all item-->
           <div v-for="(plan,index) in filtList" :key="index" class="plan detail" :class="{finished:plan.complete}">

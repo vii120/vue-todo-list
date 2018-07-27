@@ -16,7 +16,7 @@ var app = new Vue({
       },
     ],
     newPlan: '',
-    allPlan: {content: 'All Done!', complete: false},
+    allComplete: false,
     selectList: ['all', 'active', 'completed', 'stared'],
     filter: 'all',
   },
@@ -65,20 +65,12 @@ var app = new Vue({
       plan.complete = !plan.complete;
     },
     //complete/incomplete all plan
-    allcheck() {
+    allCheck() {
       const vm = this;
-      if (vm.allPlan.complete == false){
-        vm.list.forEach(function(item){
-          item.complete = true
-        })
-        vm.allPlan.content = 'All mark as unfinished!'
-      } else {
-        vm.list.forEach(function(item){
-          item.complete = false
-        })
-        vm.allPlan.content = 'All done!'
-      }
-      vm.allPlan.complete = !vm.allPlan.complete;
+      vm.allComplete = !vm.allComplete;
+      vm.list.forEach(function(item){
+        item.complete = vm.allComplete
+      })
     },
     //stared single plan
     starItem(plan) {
@@ -133,6 +125,15 @@ var app = new Vue({
         return true
       } else {
         return false
+      }
+    },
+    //all check option content
+    allCheckText() {
+      const vm = this;
+      if (vm.allComplete){
+        return 'All done!'
+      } else {
+        return 'All mark as unfinished!'
       }
     }
   }
