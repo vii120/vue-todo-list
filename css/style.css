@@ -80,6 +80,7 @@ header .status {
 header input[type="text"] {
   font-family: inherit;
   border: none;
+  outline: none;
   border-radius: 16px;
   padding: 8px 12px;
   margin-bottom: 16px;
