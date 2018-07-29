@@ -21,69 +21,90 @@ var app = new Vue({
     filter: 'all',
   },
   methods: {
+    //get localStorage data
+    getPlan() {
+      if (localStorage.todoList!==undefined){
+        this.list = JSON.parse(localStorage.todoList);
+        delete this.list[this.list.length-1].new;
+        this.allComplete = JSON.parse(localStorage.allComplete);
+      } 
+    },
+    //save to localStorage
+    savePlan() {
+      localStorage.setItem('todoList',JSON.stringify(this.list));
+      localStorage.setItem('allComplete',this.allComplete);
+    },
     //add new plan
-    addPlan(plan) {
-      if (plan!=''){
-        this.list.push({
-          content: plan,
-          complete: false,
-          star: false
+    addPlan() {
+      const vm = this;
+      if (vm.newPlan!==''){
+        delete vm.list[vm.list.length-1].new;
+        vm.list.push({
+          content: vm.newPlan, complete: false, star: false, new:true
         });
-        this.newPlan = '';
+        vm.newPlan = '';
       }
+      vm.savePlan();
     },
-    // remove single plan
-    removePlan(plan) {
-      if (confirm(`Do you want to delete "${plan.content}"?`)){
-        this.list.splice(this.list.indexOf(plan),1)
-      }
-    },
-    //remove all plan
-    removeAll() {
-      if (confirm("Do you want to delete ALL?")){
-        this.list = [];
-      }
-    },
-    //remove completed plan
-    removeComplete() {
+    //remove btn
+    removeBtn(item) {
       const vm = this;
-      console.log(vm.completeNum);
-      if (vm.completeNum!==0){
-        if (confirm("Do you want to delete all completed item(s)?")){
-          this.list.forEach(function(item){
-            if (item.complete){
-              this.list.splice(this.list.indexOf(item),1)
-            }
-          })
+      if (item=='all'){
+        if (confirm("Do you want to delete ALL?")){
+          vm.list = [];
         }
-      } else {
-        alert('Nothing has been completed!');
+      } else if (item=='complete') {
+        if (vm.completeNum!==0){
+          if (confirm("Do you want to delete all completed item(s)?")){
+            vm.list.forEach(function(item){
+              if (item.complete){
+                vm.list.splice(vm.list.indexOf(item),1)
+              }
+            })
+          }
+        } else {
+          alert('Nothing has been completed!');
+        }
       }
+      vm.savePlan();
     },
-    //complete/incomplete single plan
-    complete(plan) {
-      plan.complete = !plan.complete;
-    },
-    //complete/incomplete all plan
-    allCheck() {
+    //list functions btn
+    listFunction(plan, func) {
       const vm = this;
-      vm.allComplete = !vm.allComplete;
-      vm.list.forEach(function(item){
-        item.complete = vm.allComplete
-      })
+      switch (func) {
+        case 'complete':
+          if (plan=='all'){
+            vm.allComplete = !vm.allComplete;
+            vm.list.forEach(function(item){
+              item.complete = vm.allComplete
+            })
+          } else {
+            plan.complete = !plan.complete
+          }
+          break;
+        case 'edit':
+          let edit = prompt('Please edit the content below：', plan.content);
+          if (edit!==null && edit!==''){
+            plan.content = edit
+          }
+          break;
+        case 'star':
+          plan.star = !plan.star;
+          break;
+        case 'delete':
+          if (confirm(`Do you want to delete "${plan.content}"?`)){
+            this.list.splice(this.list.indexOf(plan),1)
+          }
+          break;
+      }
+      vm.savePlan();
     },
-    //stared single plan
-    starItem(plan) {
+    // reset to default list
+    resetList() {
       const vm = this;
-      plan.star = !plan.star
-    },
-    //edit single plan
-    editItem(plan) {
-      let edit = prompt('Please edit the content below：', plan.content);
-      if (edit==null || edit==''){
-        return 
-      } else {
-        plan.content = edit
+      if (confirm('Your to-do list record will be delete.\nAre you sure?')){
+        localStorage.clear();
+        window.location.reload();
       }
     }
   },
@@ -135,6 +156,10 @@ var app = new Vue({
       } else {
         return 'All mark as unfinished!'
       }
-    }
+    },
+  },
+  mounted(){
+    // console.log(window.localStorage);
+    this.getPlan();
   }
 })

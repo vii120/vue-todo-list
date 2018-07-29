@@ -25,10 +25,23 @@ $secondary-color: #b5e1cd
 $success-color: green
 $warning-color: yellow
 $danger-color: red
+$danger-light-color: #f9bcbc
 $less-danger-color: orange
 $light-color: grey
 
 $bg-color: #ebebeb
+
+//* $Style
+@mixin primary-btn
+  text-align: center
+  border-radius: 8px
+  margin: 0 8px
+  padding: 4px 8px
+  box-shadow: 3px 3px 5px rgba(0,0,0,.3)
+  transition: all .1s
+  @content
+  &:active
+    transform: translate(2px, 2px)
 
 /*------------------*/
 /* $Global
@@ -60,14 +73,13 @@ a
 /*------------------*/
 .box
   max-width: 400px
-  margin: 0 auto
-  margin-top: 36px
+  margin: 36px auto
   background-color: $primary-color
   border-radius: 12px
   box-shadow: 5px 5px 12px rgba(0,0,0,0.5)
   overflow: hidden
   @media (max-width:576px)
-    margin-top: 18px
+    margin: 18px auto
   input[type="checkbox"]
     display: none
 
@@ -82,6 +94,7 @@ header
   .status
     margin-bottom: 16px
   input[type="text"]
+    font-family: inherit
     border: none
     border-radius: 16px
     padding: 8px 12px
@@ -136,6 +149,7 @@ header
     right: 12px
     transform: translateY(-50%)
     .icon
+      display: inline-block
       font-size: 18px
       width: 20px
       height: 20px
@@ -143,15 +157,15 @@ header
       text-align: center
       visibility: visible
       opacity: 1
-      transition: all .2s
+      transition: all .1s
       &:active
-        transform: translate(2px, 2px)
+        transform: translate(1px, 1px)
       &.top
         color: $less-danger-color
       &.del
         color: $danger-color
   &.finished
-    span
+    .planText
       text-decoration: line-through
     .fn-gp
       .icon
@@ -160,6 +174,22 @@ header
           opacity: 0
   &.empty
     font-style: italic
+  .newItem
+    opacity: 0
+    color: red
+    animation: newShow 1s .2s forwards
+
+@keyframes newShow
+  0%
+    opacity: .5
+    bottom: -5px
+  30%
+    opacity: 1
+  80%
+    opacity: .5
+  100%
+    opacity: 0
+    bottom: 5px
 
 .detail
   @media (max-width:576px)
@@ -171,18 +201,27 @@ header
 /*------------------*/
 /* $Delete Bar
 /*------------------*/
-.del-gp
-  display: flex
-  justify-content: flex-end
-  padding: 16px 0
-  padding-right: 4px
+.btn-gp
+  display: block
+  padding: 12px 4px
+  @media (max-width:576px)
+    display: flex
+    justify-content: space-around
+    align-items: center
+    font-size: 14px
+  .del-gp
+    display: flex
+    justify-content: flex-end
+    margin-bottom: 12px
+    @media (max-width:576px)
+      margin-bottom: 0px
+  .reset-gp
+    display: flex
+    justify-content: flex-end
   .btn
-    text-align: center
-    border-radius: 8px
-    margin: 0 8px
-    padding: 4px 8px
+    @include primary-btn
     background-color: $secondary-color
-    box-shadow: 3px 3px 5px rgba(0,0,0,.3)
-    transition: all .1s
-    &:active
-      transform: translate(2px, 2px)
+    &.reset
+      font-weight: bold
+      color: $danger-color
+      background-color: $danger-light-color

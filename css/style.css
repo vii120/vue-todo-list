@@ -49,8 +49,7 @@ a {
 /*------------------ */
 .box {
   max-width: 400px;
-  margin: 0 auto;
-  margin-top: 36px;
+  margin: 36px auto;
   background-color: #3bb17c;
   border-radius: 12px;
   box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.5);
@@ -58,7 +57,7 @@ a {
 }
 @media (max-width: 576px) {
   .box {
-    margin-top: 18px;
+    margin: 18px auto;
   }
 }
 .box input[type="checkbox"] {
@@ -79,6 +78,7 @@ header .status {
   margin-bottom: 16px;
 }
 header input[type="text"] {
+  font-family: inherit;
   border: none;
   border-radius: 16px;
   padding: 8px 12px;
@@ -149,6 +149,7 @@ header input[type="text"] {
   transform: translateY(-50%);
 }
 .plan .fn-gp .icon {
+  display: inline-block;
   font-size: 18px;
   width: 20px;
   height: 20px;
@@ -156,10 +157,10 @@ header input[type="text"] {
   text-align: center;
   visibility: visible;
   opacity: 1;
-  transition: all 0.2s;
+  transition: all 0.1s;
 }
 .plan .fn-gp .icon:active {
-  transform: translate(2px, 2px);
+  transform: translate(1px, 1px);
 }
 .plan .fn-gp .icon.top {
   color: orange;
@@ -167,7 +168,7 @@ header input[type="text"] {
 .plan .fn-gp .icon.del {
   color: red;
 }
-.plan.finished span {
+.plan.finished .planText {
   text-decoration: line-through;
 }
 .plan.finished .fn-gp .icon:first-child {
@@ -177,7 +178,28 @@ header input[type="text"] {
 .plan.empty {
   font-style: italic;
 }
+.plan .newItem {
+  opacity: 0;
+  color: red;
+  animation: newShow 1s 0.2s forwards;
+}
 
+@keyframes newShow {
+  0% {
+    opacity: 0.5;
+    bottom: -5px;
+  }
+  30% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    bottom: 5px;
+  }
+}
 @media (max-width: 576px) {
   .detail {
     padding-bottom: 36px;
@@ -193,23 +215,48 @@ header input[type="text"] {
 /*------------------ */
 /* $Delete Bar */
 /*------------------ */
-.del-gp {
+.btn-gp {
+  display: block;
+  padding: 12px 4px;
+}
+@media (max-width: 576px) {
+  .btn-gp {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 14px;
+  }
+}
+.btn-gp .del-gp {
   display: flex;
   justify-content: flex-end;
-  padding: 16px 0;
-  padding-right: 4px;
+  margin-bottom: 12px;
 }
-.del-gp .btn {
+@media (max-width: 576px) {
+  .btn-gp .del-gp {
+    margin-bottom: 0px;
+  }
+}
+.btn-gp .reset-gp {
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-gp .btn {
   text-align: center;
   border-radius: 8px;
   margin: 0 8px;
   padding: 4px 8px;
-  background-color: #b5e1cd;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
   transition: all 0.1s;
+  background-color: #b5e1cd;
 }
-.del-gp .btn:active {
+.btn-gp .btn:active {
   transform: translate(2px, 2px);
+}
+.btn-gp .btn.reset {
+  font-weight: bold;
+  color: red;
+  background-color: #f9bcbc;
 }
 
 /*# sourceMappingURL=style.css.map */
