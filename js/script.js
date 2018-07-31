@@ -25,7 +25,6 @@ var app = new Vue({
     getPlan() {
       if (localStorage.todoList!==undefined){
         this.list = JSON.parse(localStorage.todoList);
-        delete this.list[this.list.length-1].new;
         this.allComplete = JSON.parse(localStorage.allComplete);
       } 
     },
@@ -38,13 +37,16 @@ var app = new Vue({
     addPlan() {
       const vm = this;
       if (vm.newPlan!==''){
-        delete vm.list[vm.list.length-1].new;
         vm.list.push({
           content: vm.newPlan, complete: false, star: false, new:true
         });
         vm.newPlan = '';
+        setTimeout(function(){
+          delete vm.list[vm.list.length-1].new;
+          vm.savePlan();
+        }, 1500)
+        clearTimeout();
       }
-      vm.savePlan();
     },
     //remove btn
     removeBtn(item) {
@@ -161,5 +163,5 @@ var app = new Vue({
   mounted(){
     // console.log(window.localStorage);
     this.getPlan();
-  }
+  },
 })
