@@ -31,6 +31,3 @@ https://vii120.github.io/vue-todo-list/
 ## CSS preprocessor
 
 使用**SASS**撰寫
-
-## Reference
-六角學院：[Vue 出一個電商網站 ](https://www.udemy.com/vue-hexschool/)
